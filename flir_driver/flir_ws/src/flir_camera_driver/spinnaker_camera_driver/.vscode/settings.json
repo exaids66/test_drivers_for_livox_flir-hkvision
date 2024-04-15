@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/m/Documents/flir_ws/devel/lib/python3/dist-packages",
+        "/home/m/Documents/realsense_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/m/Documents/flir_ws/devel/lib/python3/dist-packages",
+        "/home/m/Documents/realsense_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}
