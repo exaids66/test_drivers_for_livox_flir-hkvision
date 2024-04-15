@@ -1,0 +1,47 @@
+参考链接：
+https://www.flir.com.au/support-center/iis/machine-vision/application-note/using-ros-with-spinnaker/
+
+
+prior:
+
+	flir:(修改相机的usb接口权限)
+	lsusb
+	sudo chmod 666 /dev/bus/usb/00x/00x
+	
+
+flir_ws_test2:（已知flir的提交给ros的时间是图像曝光完毕时的系统时间，这里固定曝光时间为50毫秒）
+
+	source ./devel/setup.bash
+	roslaunch spinnaker_camera_driver camera.launch
+	
+	
+	
+livox_ws_test1:
+	source ./devel/setup.bash
+	 roslaunch livox_ros_driver livox_lidar_msg.launch
+
+rosbag redord:
+	rosbag record /camera/image_color/compressed /livox/imu /livox/lidar
+	
+	
+	
+查看rosbag中特定topic的时间戳：（例子：查看/livox/lidar 中第一条消息的时间戳）
+rostopic echo -b your_bagfile.bag /livox/lidar/header/stamp -n 1
+
+
+
+********************
+
+海康相机
+参考链接：https://blog.csdn.net/m0_51697446/article/details/130619977?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171067965716800182171937%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171067965716800182171937&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-130619977-null-null.142^v99^pc_search_result_base6&utm_term=ubuntu%20%E6%B5%B7%E5%BA%B7%E7%9B%B8%E6%9C%BA&spm=1018.2226.3001.4187
+
+查看SDK：
+/opt/MVS/bin/MVS.sh
+
+**********
+
+flir_test2 和 livox 对的非常整齐
+flir_test2 和 livox_test1 对的不齐
+****
+
+更新：应该用flir_test1和livox_test1。rqt的可视化不准确，是否对齐应该以header.stamp为准
